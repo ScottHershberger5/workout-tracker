@@ -27,7 +27,7 @@ class Exercise:
         # TODO: Set self.name
         # TODO: Set self.date (use datetime.now().strftime("%Y-%m-%d") if date is None)
         
-        self.name = mame
+        self.name = name
         if date:
             self.date = date
         else:
@@ -72,7 +72,7 @@ class CardioExercise(Exercise):
         duration (float): Time spent in minutes
     """
     
-    def __init__(self, name, distance, duration, date = None):
+    def __init__(self, name, distance, duration, date=None):
         """Initialize a CardioExercise.
         
         Args:
@@ -84,7 +84,7 @@ class CardioExercise(Exercise):
         # TODO: Call parent class __init__ with super()
         # TODO: Set self.distance
         # TODO: Set self.duration
-        super().__init__(self, name, date = None)
+        super().__init__(name, date)
         self.distance = float(distance)
         self.duration = float(duration)
     
