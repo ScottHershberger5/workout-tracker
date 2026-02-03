@@ -132,3 +132,32 @@ class StrengthExercise(Exercise):
 
     def __str__(self):
         return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories()} calories"
+
+class FlexibilityExercise(Exercise):
+    
+    def __init__(self, name, duration, intensity, date=None):
+        super().__init__(name, date)
+        
+        self.intensity_multiplier = {
+            "low" : 1.0,
+            "medium" : 1.5,
+            "high" : 2.0
+        }
+        
+        self.intensity = intensity.lower()
+        self.duration = duration
+        
+        if self.intensity not in self.intensity_multiplier:
+            raise ValueError("Intensity given is not a recognized intensity")
+        
+    
+    def calculate_calories(self):
+        return float(self.duration * 2.5 * self.intensity_multiplier[self.intensity])
+    
+    def get_duration(self):
+        return self.duration
+
+    def __str__(self):
+        return f"{self.name} ({self.duration} min, {self.intensity} intensity): {self.calculate_calories()} calories"
+
+    
