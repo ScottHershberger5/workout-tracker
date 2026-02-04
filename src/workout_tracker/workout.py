@@ -38,7 +38,7 @@ class Workout():
         summary = "-----Workout Summary-----\n"
         for index, exercise in enumerate(self._exercises):
             summary += f"{index:.0f}. {exercise}\n"
-        summary += "------------------"
+        summary += "-------------------------\n"
         summary += f"Total: {self.total_calories():.0f} calories, {self.total_duration():.0f} minutes"
         return summary
 

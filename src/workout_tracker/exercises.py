@@ -60,7 +60,7 @@ class Exercise:
         """Return a string representation of the exercise."""
         # TODO: Return a string like "ExerciseName: 100 calories"
         # Use self.calculate_calories() to get the calories
-        return f"{self.name}: {self.calculate_calories()} calories"
+        return f"{self.name}: {self.calculate_calories():.0f} calories"
 
 class CardioExercise(Exercise):
     """Cardio exercise with distance and time tracking.
@@ -112,7 +112,7 @@ class CardioExercise(Exercise):
         """Return detailed string representation."""
         # TODO: Return something like "Running (3.5 miles, 30 min): 350 calories"
         # Include self.name, self.distance, self.duration, and self.calculate_calories()
-        return f"You did {self.name}, you went {self.distance} miles in {self.duration} minutes. You burned {self.calculate_calories()} calories"
+        return f"You did {self.name}, you went {self.distance} miles in {self.duration} minutes. You burned {self.calculate_calories():.0f} calories"
 
 class StrengthExercise(Exercise):
 
@@ -131,7 +131,7 @@ class StrengthExercise(Exercise):
         # return f"You did {self.name}, you went for {self.duration} minutes, and did {self.sets} sets. You burned {self.calculate_calories()} calories"
 
     def __str__(self):
-        return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories()} calories"
+        return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories():.0f} calories"
 
 class FlexibilityExercise(Exercise):
     
@@ -158,6 +158,6 @@ class FlexibilityExercise(Exercise):
         return self.duration
 
     def __str__(self):
-        return f"{self.name} ({self.duration} min, {self.intensity} intensity): {self.calculate_calories()} calories"
+        return f"{self.name} ({self.duration} min, {self.intensity} intensity): {self.calculate_calories():.0f} calories"
 
     
