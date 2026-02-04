@@ -112,4 +112,52 @@ class CardioExercise(Exercise):
         """Return detailed string representation."""
         # TODO: Return something like "Running (3.5 miles, 30 min): 350 calories"
         # Include self.name, self.distance, self.duration, and self.calculate_calories()
-        return f"You did {self.name}, you went {self.distance} miles in {self.duration} minutes. You burned {self.calculate_calories()}"
+        return f"You did {self.name}, you went {self.distance} miles in {self.duration} minutes. You burned {self.calculate_calories()} calories"
+
+class StrengthExercise(Exercise):
+
+    def __init__(self, name, weight, reps, sets, date=None):
+        super().__init__(name,date)
+        self.weight = float(weight)
+        self.reps = int(reps)
+        self.sets = int(sets)
+
+    def calculate_calories(self):
+        return float(self.weight * self.reps * self.sets * 0.05)
+
+    def get_duration(self):
+        self.duration = self.sets * 3
+        return self.duration
+        # return f"You did {self.name}, you went for {self.duration} minutes, and did {self.sets} sets. You burned {self.calculate_calories()} calories"
+
+    def __str__(self):
+        return f"{self.name} ({self.weight} lbs x {self.reps} reps x {self.sets} sets): {self.calculate_calories()} calories"
+
+class FlexibilityExercise(Exercise):
+    
+    def __init__(self, name, duration, intensity, date=None):
+        super().__init__(name, date)
+        
+        self.intensity_multiplier = {
+            "low" : 1.0,
+            "medium" : 1.5,
+            "high" : 2.0
+        }
+        
+        self.intensity = intensity.lower()
+        self.duration = duration
+        
+        if self.intensity not in self.intensity_multiplier:
+            raise ValueError("Intensity given is not a recognized intensity")
+        
+    
+    def calculate_calories(self):
+        return float(self.duration * 2.5 * self.intensity_multiplier[self.intensity])
+    
+    def get_duration(self):
+        return self.duration
+
+    def __str__(self):
+        return f"{self.name} ({self.duration} min, {self.intensity} intensity): {self.calculate_calories()} calories"
+
+    
